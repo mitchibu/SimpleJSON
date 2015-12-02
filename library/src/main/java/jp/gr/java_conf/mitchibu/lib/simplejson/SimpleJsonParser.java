@@ -10,19 +10,18 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
 
-import android.annotation.TargetApi;
-import android.os.Build;
 import android.text.TextUtils;
-import android.util.JsonReader;
-import android.util.JsonToken;
 
-@TargetApi(Build.VERSION_CODES.HONEYCOMB)
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonToken;
+
+@SuppressWarnings("unused")
 public class SimpleJsonParser implements Closeable {
 	public static final String DIVIDER_ARRAY = "[";
 	public static final String DIVIDER_OBJECT = "{";
 
-	private final Map<String, JsonHandler> handlerMap = new HashMap<String, JsonHandler>();
-	private final Stack<String> nameStack = new Stack<String>();
+	private final Map<String, JsonHandler> handlerMap = new HashMap<>();
+	private final Stack<String> nameStack = new Stack<>();
 	private final JsonReader jsonReader;
 
 	public SimpleJsonParser(String json) {
